@@ -84,7 +84,7 @@ function FuelMap({ stations }) {
             placeholder="Filtrar por rótulo"
             value={filterRotulo}
             onChange={e => setFilterRotulo(e.target.value)}
-            style={{ padding: '0.5rem', width: '250px', borderRadius: '4px', border: '1px solid #1976d2', marginLeft: '0.5rem' }}
+            className="filter-input"
           />
         </div>
         <div>

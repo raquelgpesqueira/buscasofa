@@ -1,18 +1,17 @@
 @import '../styles/variables.css';
 
 header {
-    background: var(--dark-blue);
-    color: var(--primary-blue);
+    background: var(--dark);
+    color: var(--white);
     padding: 1rem 0;
     margin-bottom: 1rem;
     height: 3rem;
-    
 }
 
 nav a {
     vertical-align: middle;
     padding: 10px;
-    color: var(--light-blue);
+    color: var(--surface);
     margin-right: 1.5rem;
     font-weight: bold;
     text-decoration: none;
@@ -20,11 +19,11 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--yellow);
+    color: var(--secondary);
 }
 
 button {
-  background: var(--primary-blue);
+  background: var(--primary);
   color: var(--white);
   border: none;
   padding: 0.7rem 1.5rem;
@@ -34,6 +33,6 @@ button {
 }
 
 button:hover {
-  background: var(--yellow);
-  color: var(--dark-gray);
+  background: var(--accent);
+  color: var(--white);
 }

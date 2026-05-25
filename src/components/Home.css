@@ -1,11 +1,11 @@
 @import '../styles/variables.css';
 
 .home-container {
-  background: var(--light-gray);
-  color: var(--dark-gray);
+  background: var(--surface);
+  color: var(--text);
   padding: 2rem;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(33,33,33,0.08);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(37, 69, 71, 0.12);
 }
 .home-container table {
   width: 100%;
@@ -15,5 +15,5 @@
 .home-container td, .home-container th {
   padding: 1rem;
   text-align: left;
-  border-bottom: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--surface-strong);
 }
