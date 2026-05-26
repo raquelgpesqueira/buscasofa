@@ -35,7 +35,34 @@
     margin-bottom: 10px;
     border: 1px solid var(--primary);
     border-radius: 5px;
-}   
+}
+.rating-label {
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+.rating-input {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+.star-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid var(--secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    background: var(--surface);
+}
+.star-option.selected {
+    border-color: var(--primary);
+    background: rgba(59, 130, 246, 0.12);
+}
+.star-option input {
+    display: none;
+}
 .comments-section form button {
     background: var(--primary);
     color: var(--white);
@@ -45,4 +72,9 @@
     cursor: pointer;
     width: 100%;
     font-weight: bold;
+}
+.comment-rating {
+    margin: 6px 0;
+    color: #f5a623;
+    letter-spacing: 1px;
 }

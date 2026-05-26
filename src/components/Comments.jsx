@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import './Comments.css';
 
-
 function Comments({ stationId, user }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
+  const [rating, setRating] = useState(5);
   const [msg, setMsg] = useState('');
 
   const fetchComments = async () => {
@@ -25,11 +25,12 @@ function Comments({ stationId, user }) {
     const res = await fetch('http://localhost:4000/api/comments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token, station_id: stationId, comment })
+      body: JSON.stringify({ token, station_id: stationId, comment, rating })
     });
     const data = await res.json();
     if (res.ok) {
       setComment('');
+      setRating(5);
       setMsg('¡Comentario enviado!');
       fetchComments();
     } else {
@@ -37,6 +38,7 @@ function Comments({ stationId, user }) {
     }
   };
 
+  const renderStars = value => '★'.repeat(value) + '☆'.repeat(5 - value);
 
   return (
     <div className="comments-section">
@@ -48,6 +50,21 @@ function Comments({ stationId, user }) {
       }
       {user && (
         <form onSubmit={handleSubmit} className="comment-form">
+          <label className="rating-label">Valoración:</label>
+          <div className="rating-input">
+            {[5, 4, 3, 2, 1].map(value => (
+              <label key={value} className={`star-option ${rating === value ? 'selected' : ''}`}>
+                <input
+                  type="radio"
+                  name="rating"
+                  value={value}
+                  checked={rating === value}
+                  onChange={() => setRating(value)}
+                />
+                {renderStars(value)}
+              </label>
+            ))}
+          </div>
           <textarea
             value={comment}
             onChange={e => setComment(e.target.value)}
@@ -62,6 +79,7 @@ function Comments({ stationId, user }) {
         {comments.map((c, idx) => (
           <li key={idx}>
             <strong>{c.username}</strong> <em>({new Date(c.created_at).toLocaleString()})</em>
+            <div className="comment-rating">{renderStars(c.rating || c.stars || 0)}</div>
             <div>{c.comment}</div>
           </li>
         ))}
