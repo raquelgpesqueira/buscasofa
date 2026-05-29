@@ -2,6 +2,8 @@
  * Permite obtener precios actualizados de la sede dl ministerio
  * @returns precios actualizados cada media hora
  */
+
+// ***************************************************** CANDIDATA PRUEBA UNITARIA fetchFuelPrices()
 export async function fetchFuelPrices() {
   console.log('Obteniendo nuenvos precios...');
   const response = await fetch(
