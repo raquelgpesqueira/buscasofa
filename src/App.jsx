@@ -1,6 +1,6 @@
 // @ts-ignore
 import './App.css';
-
+import NotFound from './components/NotFound';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchFuelPrices } from './apis/fuelApiLib';
@@ -60,28 +60,26 @@ function App() {
   }, []); */
 
   return (
-    <BrowserRouter>
-      <Header user={user} />
-      {
-        loading && <div className="loading">Cargando...</div>
-      }
-      {
-        error && <div className="error">Error: {error}</div>
-      }
-      {!loading && !error && (
-        <Routes>
-          <Route path="/registro" element={<Register />} />
-          <Route path="/login" element={<Login onLogin={setUser} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/" element={<Home stations={stations} />} />
-          <Route path="/mapa" element={<FuelMap stations={stations} />} />
-          <Route path="/lista" element={<FuelTable stations={stations} />} />
-          <Route path="/station/:id" element={<StationDetail stations={stations} user={user} />} />
-        </Routes>
-      )}
-      <Footer />
-    </BrowserRouter>
-  )
+  <BrowserRouter>
+    <Header user={user} />
+
+    {loading && <div className="loading">Cargando...</div>}
+    {error && <div className="error">Error: {error}</div>}
+
+    <Routes>
+      <Route path="/registro" element={<Register />} />
+      <Route path="/login" element={<Login onLogin={setUser} />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/" element={<Home stations={stations} />} />
+      <Route path="/mapa" element={<FuelMap stations={stations} />} />
+      <Route path="/lista" element={<FuelTable stations={stations} />} />
+      <Route path="/station/:id" element={<StationDetail stations={stations} user={user} />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+
+    <Footer />
+  </BrowserRouter>
+)
 }
 
 export default App
