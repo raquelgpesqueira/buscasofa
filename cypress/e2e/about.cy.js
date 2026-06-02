@@ -7,7 +7,7 @@ describe('Página About', () => {
 
     it('Muestra el número de equipo y los miembros', () => {
 
-        cy.contains('Equipo nº 23').should('exist');
+        cy.contains('Equipo nº 6').should('exist');
 
         cy.contains('Andy Garcia Sanchez').should('exist');
         cy.contains('Raquel Gonzalez Pesqueira').should('exist');
