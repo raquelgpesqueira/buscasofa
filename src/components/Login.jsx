@@ -19,7 +19,7 @@ function Login({ onLogin }) {
     if (res.ok) {
       setMsg('¡Bienvenido, ' + data.username + '!');
       localStorage.setItem('token', data.token);
-      if (onLogin) onLogin(data.username);
+      if (onLogin) onLogin(data.username, data.token);
     } else {
       setMsg(data.message);
     }

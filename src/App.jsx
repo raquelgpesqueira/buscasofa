@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchFuelPrices } from './apis/fuelApiLib';
 import { FuelApi } from './apis/FuelApi';
+import Profile from './components/Profile';
 
 
 import Header from './components/Header';
@@ -30,8 +31,15 @@ function App() {
 
   const [stations, setStations] = useState([]);
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);   // Inicialmente cargando ...
   const [error, setError] = useState(null);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+    setToken(null);
+  };
 
     useEffect(() => {
       fetchFuelPrices()
@@ -61,15 +69,16 @@ function App() {
 
   return (
   <BrowserRouter>
-    <Header user={user} />
+    <Header user={user} onLogout={handleLogout} />
 
     {loading && <div className="loading">Cargando...</div>}
     {error && <div className="error">Error: {error}</div>}
 
     <Routes>
       <Route path="/registro" element={<Register />} />
-      <Route path="/login" element={<Login onLogin={setUser} />} />
+      <Route path="/login" element={<Login onLogin={(username, token) => { setUser(username); setToken(token); }} />} />
       <Route path="/about" element={<About />} />
+      <Route path="/perfil" element={<Profile user={user} token={token} />} />
       <Route path="/" element={<Home stations={stations} />} />
       <Route path="/mapa" element={<FuelMap stations={stations} />} />
       <Route path="/lista" element={<FuelTable stations={stations} />} />
