@@ -13,6 +13,11 @@ Para que funcionen las pruebas con usuarios hay que tener ejecutando el servidor
 https://github.com/luispedraza/buscasofa-server 
 
 
+# Manual de usuario
+
+El manual de usuario se encuentra incluido en la carpeta doc de este repositorio
+
+[Manual](./doc/manual.md)
 
 
 Recursos útiles
