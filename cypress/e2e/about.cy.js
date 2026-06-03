@@ -15,5 +15,10 @@ describe('Página About', () => {
         cy.contains('Jose Ramon Fernandez Peralta').should('exist');
         cy.contains('Adrian Miguel Almazan Tello').should('exist');
 
+        cy.contains('desarrollo y validación de pruebas funcionales').should('exist');
+        cy.contains('integración con la API de carburantes').should('exist');
+        cy.contains('implementación de la página About').should('exist');
+        cy.contains('revisión de componentes').should('exist');
+        cy.contains('apoyo en pruebas').should('exist');
     });
 });
