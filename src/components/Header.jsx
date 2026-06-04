@@ -34,8 +34,8 @@ function Header({ user, onLogout }) {
 
                     {!user ? (
                         <>
-                            <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
-                            <Link to="/registro">Registro</Link>
+                            <Link className="login" to="/login" style={{ marginRight: '1rem' }}>Login</Link>
+                            <Link className="registro" to="/registro">Registro</Link>
                         </>
                     ) : (
                         <>
